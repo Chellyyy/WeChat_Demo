@@ -24,27 +24,49 @@ swiper image{
   border-top: 1px solid #ededed;
   padding: 5px;
 }
+<<<<<<< HEAD
 .logs-author-date{
+=======
+.logs-author-data{
+>>>>>>> f49b474a3a068e4b6ec03b08e3e7d34172a6a836
   margin: 10rpx 0 20rpx 10rpx;
 
 }
 .post-author{
   width: 60rpx;
   height: 60rpx;
+<<<<<<< HEAD
   vertical-align: middle;
 }
 .logs-date{
   margin-left: 20rpx;
   vertical-align: middle;
+=======
+  vertical-align: center;
+}
+.logs-data{
+  margin-left: 20rpx;
+  vertical-align: center;
+  height: 60rpx;
+}
+.logs-data{
+  margin-left: 20rpx;
+  vertical-align: center;
+>>>>>>> f49b474a3a068e4b6ec03b08e3e7d34172a6a836
   margin-bottom: 5px;
   font-size: 26rpx;
 }
 .logs-title{
+<<<<<<< HEAD
   font-size: 40rpx;
+=======
+  font-size: 30rpx;
+>>>>>>> f49b474a3a068e4b6ec03b08e3e7d34172a6a836
   font-weight: 600;
   color: #333;
   margin-bottom: 10px;
   margin-left: 10px;
+<<<<<<< HEAD
   letter-spacing: 2rpx;
 }
 .logs-image{
@@ -82,4 +104,7 @@ swiper image{
   vertical-align: middle;
   margin-right: 20rpx;
   color: #666;
+=======
+
+>>>>>>> f49b474a3a068e4b6ec03b08e3e7d34172a6a836
 }
