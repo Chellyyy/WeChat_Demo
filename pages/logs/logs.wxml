@@ -1,0 +1,33 @@
+<!--logs.wxml-->
+<view>
+  <swiper indicator-dots="{{indicatorDots}}"
+    autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <block wx:for="{{imgUrls}}" wx:key="{{imgUrls}}">
+      <swiper-item >
+        <image src="{{item}}" class="slide-image"/>
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class='logs-container'>
+    <view class='logs-author-data'>
+      <image class='post-author' src='/images/avatar/1.png'></image>
+            <text class='logs-data'>July 17 2018</text>
+    </view>
+    <text class='logs-title'>文章标题</text>
+    <image src='images/post/crab.png'></image>
+    <text>文章简介文章简介文章简介</text>
+    <view>
+      <image src='../../images/icon/chat.png'></image>
+      <text>92</text>
+    </view>
+    <text></text>
+    <image src='../../images/icon/view.png'></image>
+    <text>65</text>
+    <view>
+      <image></image>
+      <text></text>
+      <image></image>
+      <text></text>
+    </view>
+  </view>
+</view>
