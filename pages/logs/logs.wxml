@@ -1,3 +1,4 @@
+<import src="logs-item/logs-item-template.wxml" />
 <!--logs.wxml-->
 <view>
   <swiper indicator-dots="{{indicatorDots}}"
@@ -8,26 +9,9 @@
       </swiper-item>
     </block>
   </swiper>
-  <view class='logs-container'>
-    <view class='logs-author-data'>
-      <image class='post-author' src='/images/avatar/1.png'></image>
-            <text class='logs-data'>July 17 2018</text>
-    </view>
-    <text class='logs-title'>文章标题</text>
-    <image src='images/post/crab.png'></image>
-    <text>文章简介文章简介文章简介</text>
-    <view>
-      <image src='../../images/icon/chat.png'></image>
-      <text>92</text>
-    </view>
-    <text></text>
-    <image src='../../images/icon/view.png'></image>
-    <text>65</text>
-    <view>
-      <image></image>
-      <text></text>
-      <image></image>
-      <text></text>
-    </view>
+  <block wx:for="{{postData}}" wx:key="{{postData}}">
+  <view catchtap='logsTab' data-postid="{{item.postId}}">
+      <template is="logsItem" data="{{...item}}" />
   </view>
+  </block>
 </view>

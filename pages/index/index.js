@@ -50,5 +50,10 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
+  },
+  onTab: function(){
+    wx.redirectTo({
+      url: '../logs/logs',
+    })
   }
 })
