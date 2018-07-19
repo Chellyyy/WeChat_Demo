@@ -29,7 +29,10 @@ Page({
     // },
     var postsCollected = wx.getStorageSync("posts_collected");
     if(postsCollected){
-      var postcollected = postsCollected[postId];
+      var postcollected = false;
+      if (postsCollected[postId]){
+        postcollected = postsCollected[postId];
+      }
       this.setData({
         collection:postcollected
       })
