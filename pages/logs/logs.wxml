@@ -1,3 +1,4 @@
+<import src="logs-item/logs-item-template.wxml" />
 <!--logs.wxml-->
 <view>
   <swiper indicator-dots="{{indicatorDots}}"
@@ -8,41 +9,9 @@
       </swiper-item>
     </block>
   </swiper>
-  <view class='logs-container'>
-<<<<<<< HEAD
-    <view class='logs-author-date'>
-      <image class='post-author' src='/images/avatar/1.png'></image>
-      <text class='logs-date'>July 17 2018</text>
-    </view>
-    <text class='logs-title'>文章标题</text>
-    <image class='logs-image' src='/images/post/crab.png'></image>
-    <text class='logs-content'>文章简介文章简介文章简介</text>
-    <view class='logs-data'>
-      <image class='logs-data-img' src='../../images/icon/chat.png'></image>
-      <text class='logs-data-coll'>92</text>
-      <image class='logs-data-img' src='../../images/icon/view.png'></image>
-      <text class='logs-data-view'>65</text>
-=======
-    <view class='logs-author-data'>
-      <image class='post-author' src='/images/avatar/1.png'></image>
-            <text class='logs-data'>July 17 2018</text>
-    </view>
-    <text class='logs-title'>文章标题</text>
-    <image src='images/post/crab.png'></image>
-    <text>文章简介文章简介文章简介</text>
-    <view>
-      <image src='../../images/icon/chat.png'></image>
-      <text>92</text>
-    </view>
-    <text></text>
-    <image src='../../images/icon/view.png'></image>
-    <text>65</text>
-    <view>
-      <image></image>
-      <text></text>
-      <image></image>
-      <text></text>
->>>>>>> f49b474a3a068e4b6ec03b08e3e7d34172a6a836
-    </view>
+  <block wx:for="{{postData}}" wx:key="{{postData}}">
+  <view catchtap='logsTab' data-postid="{{item.postId}}">
+      <template is="logsItem" data="{{...item}}" />
   </view>
+  </block>
 </view>

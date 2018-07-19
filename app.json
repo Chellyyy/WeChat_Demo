@@ -1,18 +1,13 @@
 {
   "pages":[
-<<<<<<< HEAD
     "pages/index/index",
-    "pages/logs/logs"
-    
-=======
     "pages/logs/logs",
-    "pages/index/index"
->>>>>>> f49b474a3a068e4b6ec03b08e3e7d34172a6a836
+    "pages/logs/logs-detail/logs-detail"
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#405f88",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle":"white"
   }
 }
