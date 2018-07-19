@@ -9,10 +9,7 @@
   position: absolute;
   top: 180rpx;
   left: 50%;
-<<<<<<< HEAD
   margin-left: -50rpx;
-=======
->>>>>>> dd5c9757990db0fc5c603e7f7e2715aab85e3cac
 }
 
 .detail-data {

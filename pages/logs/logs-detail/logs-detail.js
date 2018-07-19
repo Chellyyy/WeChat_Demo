@@ -1,11 +1,12 @@
 var postsData = require("../../../data/data.js")
+var app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    
+    isPlayingMusic:false
   },
 
   /**
@@ -13,15 +14,12 @@ Page({
    */
   onLoad: function (options) {
     var postId = options.id;
-<<<<<<< HEAD
+    var globalData = app.globalData;
     this.data.currentPostId = postId;
-=======
->>>>>>> dd5c9757990db0fc5c603e7f7e2715aab85e3cac
     var postData = postsData.postList[postId];
     this.setData({
       postData:postData
     })
-<<<<<<< HEAD
     // var logsCollectied = {
     //   0:"true",
     //   1:"true",
@@ -40,28 +38,111 @@ Page({
         postsCollected[postId] = false;
         wx.setStorageSync("posts_collected", postsCollected);
     }
-    
+    if (app.globalData.g_isPlayingMusic && app.globalData.g_currentMusicPostId === postId){
+      // this.data.isPlayingMusic = true;
+      this.setData({
+        isPlayingMusic:true
+      })
+    }
+    this.setAudioMonitor();
+  },
+  setAudioMonitor:function(){
+    wx.onBackgroundAudioPlay(() => {
+      this.setData({
+        isPlayingMusic: true
+      })
+      app.globalData.g_isPlayingMusic = true;
+      app.globalData.g_currentMusicPostId = this.data.currentPostId;
+    });
+    wx.onBackgroundAudioPause(() => {
+      this.setData({
+        isPlayingMusic: false
+      })
+      app.globalData.g_isPlayingMusic = false;
+      app.globalData.g_currentMusicPostId = null;
+    })
   },
   onCollectionTap:function(){
     var postsCollected = wx.getStorageSync("posts_collected");
     var postCollected = postsCollected[this.data.currentPostId];
     postCollected = !postCollected;
     postsCollected[this.data.currentPostId] = postCollected;
+    this.modal(postsCollected, postCollected)
+  },
+
+
+  toast: function (postsCollected, postCollected){
     //更新缓存
     wx.setStorageSync("posts_collected", postsCollected);
     //更新数据绑定改变图片
     this.setData({
-      collection:postCollected
+      collection: postCollected
     });
-
-=======
->>>>>>> dd5c9757990db0fc5c603e7f7e2715aab85e3cac
+    wx.showToast({
+      title: postCollected ? '收藏成功' : "取消收藏",
+    })
   },
+  modal:function(postsCollected,postCollected){
+    // ES6使用箭头函数修复this指向
+    // var that = this;
+    wx.showModal({
+      title: '收藏',
+      content: postCollected?'收藏该文章？':'取消收藏？',
+      cancelText:"取消",
+      confirmText:"确定",
+      // ES6使用箭头函数修复this指向
+      success: (res) =>{
+        if(res.confirm){
+          wx.setStorageSync("posts_collected", postsCollected);
+          //更新数据绑定改变图片
+          this.setData({
+            collection: postCollected
+          });
+        }
+      }
+    })
+  },
+  onShareTap: function (event){
+    var itemList = [
+      "分享给微信好友",
+      "分享到朋友圈",
+      "分享到QQ",
+      "分享到微博"
+      ];
+    wx.showActionSheet({
+      itemList: itemList,
+      success: function (res) {
+        wx.showModal
+      }
+    })
+  },
+  onMusicTap:function(event){
+    var currentPostId = this.data.currentPostId;
+    var postData = postsData.postList[currentPostId];
+    var isPlayingMusic = this.data.isPlayingMusic;
+    if (isPlayingMusic){
+      wx.pauseBackgroundAudio();
+      this.setData({
+        isPlayingMusic : false
+      })
+    }else{
+      wx.playBackgroundAudio({
+        dataUrl: postData.music.url,
+        title: postData.music.title,
+        coverImgUrl: postData.music.coverImg
+      })
+      this.setData({
+        isPlayingMusic: true
+      })
+    }
 
+    
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+
     
   },
 
