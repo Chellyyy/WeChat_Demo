@@ -13,11 +13,15 @@ Page({
    */
   onLoad: function (options) {
     var postId = options.id;
+<<<<<<< HEAD
     this.data.currentPostId = postId;
+=======
+>>>>>>> dd5c9757990db0fc5c603e7f7e2715aab85e3cac
     var postData = postsData.postList[postId];
     this.setData({
       postData:postData
     })
+<<<<<<< HEAD
     // var logsCollectied = {
     //   0:"true",
     //   1:"true",
@@ -50,6 +54,8 @@ Page({
       collection:postCollected
     });
 
+=======
+>>>>>>> dd5c9757990db0fc5c603e7f7e2715aab85e3cac
   },
 
   /**

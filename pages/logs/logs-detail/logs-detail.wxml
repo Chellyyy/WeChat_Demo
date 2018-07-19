@@ -10,8 +10,12 @@
   <text class='detail-title'>{{postData.title}}</text>
   <view class='detail-control'>
     <view class='detail-con-img'>
+<<<<<<< HEAD
       <image wx:if="{{collection}}" catchtap='onCollectionTap' class='detail-con-coll' src='/images/icon/collection.png'></image>
       <image wx:else catchtap='onCollectionTap' class='detail-con-coll' src='/images/icon/collection-anti.png'></image>
+=======
+      <image class='detail-con-coll' src='/images/icon/collection.png'></image>
+>>>>>>> dd5c9757990db0fc5c603e7f7e2715aab85e3cac
       <image src='/images/icon/share.png'></image>
     </view>
     <view class='detail-con-bor'></view>
