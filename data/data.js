@@ -57,6 +57,7 @@ var local_database=[
       coverImg: "http://y.gtimg.cn/music/photo_new/T002R150x150M000001TEc6V0kjpVC.jpg?max_age=2592000"
     },
   },
+
   {
     date: "July 17 2018",
     title: "测试标题4",
@@ -89,6 +90,25 @@ var local_database=[
     dateTime: "三天前",
     detail: "测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试",
     postId: "4",
+    music: {
+      url: "http://ws.stream.qqmusic.qq.com/C100004HLusI2lLjZy.m4a?fromtag=38",
+      title: "女儿情-万晓利",
+      coverImg: "http://y.gtimg.cn/music/photo_new/T002R150x150M000004Wv5BO30pPc0.jpg?max_age=2592000"
+    },
+  },
+  {
+    date: "July 20 2018",
+    title: "测试标题6",
+    imgSrc: "/images/iqiyi.png",
+    avatar: "/images/avatar/2.png",
+    content: "测试内容测试内容",
+    reading: "112",
+    collection: "96",
+    author: "作者6",
+    headImgSrc: "/images/iqiyi.png",
+    dateTime: "三天前",
+    detail: "测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试",
+    postId: "5",
     music: {
       url: "http://ws.stream.qqmusic.qq.com/C100004HLusI2lLjZy.m4a?fromtag=38",
       title: "女儿情-万晓利",

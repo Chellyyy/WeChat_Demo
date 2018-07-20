@@ -1,11 +1,11 @@
 <import src="logs-item/logs-item-template.wxml" />
 <!--logs.wxml-->
 <view>
-  <swiper indicator-dots="{{indicatorDots}}"
+  <swiper indicator-dots="{{indicatorDots}}" catchtap='onSwiperTap'
     autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-    <block wx:for="{{imgUrls}}" wx:key="{{imgUrls}}">
+    <block wx:for="{{sdata}}" wx:key="{{sdata}}" >
       <swiper-item >
-        <image src="{{item}}" class="slide-image"/>
+        <image src="{{item.imgUrl}}" class="slide-image" data-postId="{{item.postId}}"/>
       </swiper-item>
     </block>
   </swiper>

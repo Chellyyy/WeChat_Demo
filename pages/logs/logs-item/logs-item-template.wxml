@@ -8,9 +8,9 @@
     <image class='logs-image' src='{{imgSrc}}'></image>
     <text class='logs-content'>{{content}}</text>
     <view class='logs-data'>
-      <image class='logs-data-img' src='../../images/icon/chat.png'></image>
+      <image class='logs-data-img' src='/images/icon/chat.png'></image>
       <text class='logs-data-coll'>{{collection}}</text>
-      <image class='logs-data-img' src='../../images/icon/view.png'></image>
+      <image class='logs-data-img' src='/images/icon/view.png'></image>
       <text class='logs-data-view'>{{reading}}</text>
     </view>
   </view>

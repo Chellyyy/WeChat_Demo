@@ -52,7 +52,7 @@ Page({
     })
   },
   onTab: function(){
-    wx.redirectTo({
+    wx.switchTab({
       url: '../logs/logs',
     })
   }
