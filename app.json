@@ -3,8 +3,7 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/logs/logs-detail/logs-detail",
-    "pages/movies/movies",
-    "pages/movies/movieList/movieList-template"
+    "pages/movies/movies"
   ],
   "window":{
     "backgroundTextStyle":"light",

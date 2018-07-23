@@ -1,0 +1,6 @@
+<import src="movie-list/movieList-template.wxml" />
+<view class='container'>
+  <template is="movieListTemplate" />
+  <template is="movieListTemplate" />
+  <template is="movieListTemplate" />
+</view>navnnana

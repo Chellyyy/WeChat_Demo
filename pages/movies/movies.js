@@ -1,3 +1,4 @@
+var app = getApp();
 Page({
 
   /**
@@ -11,9 +12,30 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    var inTheatersUrl = app.globalData.apiBase + "/v2/movie/in_theaters";
+    var commingSoonUrl = app.globalData.apiBase + "/v2/movie/coming_soon";
+    var top25oUrl = app.globalData.apiBase + "/v2/movie/top250";
+
+    this.getMovieListData(inTheatersUrl);
+    this.getMovieListData(commingSoonUrl);
+    this.getMovieListData(top25oUrl);
   },
 
+  getMovieListData:function(url){
+    wx.request({
+      url: url,
+      method: 'GET',
+      header: {
+        "Content-Type": "json"
+      },
+      success: function (res) {
+        console.log(res.data);
+      },
+      fail: function () {
+        console.log("fail");
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
