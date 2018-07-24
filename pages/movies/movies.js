@@ -1,3 +1,4 @@
+var util = require("../../utils/util.js");
 var app = getApp();
 Page({
 
@@ -5,36 +6,63 @@ Page({
    * 页面的初始数据
    */
   data: {
-    
+    inTheaters:{},
+    comingSoon:{},
+    top250:{}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var inTheatersUrl = app.globalData.apiBase + "/v2/movie/in_theaters";
-    var commingSoonUrl = app.globalData.apiBase + "/v2/movie/coming_soon";
-    var top25oUrl = app.globalData.apiBase + "/v2/movie/top250";
+    var inTheatersUrl = app.globalData.apiBase + "/v2/movie/in_theaters"+"?start=0&&count=3";
+    var comingSoonUrl = app.globalData.apiBase + "/v2/movie/coming_soon" + "?start=0&&count=3";
+    var top25oUrl = app.globalData.apiBase + "/v2/movie/top250" + "?start=0&&count=3";
 
-    this.getMovieListData(inTheatersUrl);
-    this.getMovieListData(commingSoonUrl);
-    this.getMovieListData(top25oUrl);
+    this.getMovieListData(inTheatersUrl,"inTheaters","正在热映");
+    this.getMovieListData(comingSoonUrl,"comingSoon","即将上映");
+    this.getMovieListData(top25oUrl,"top250","豆瓣top250");
   },
 
-  getMovieListData:function(url){
+  getMovieListData: function (url, setKey, cateTitle){
     wx.request({
       url: url,
       method: 'GET',
       header: {
         "Content-Type": "json"
       },
-      success: function (res) {
-        console.log(res.data);
+      success: (res) => {
+        this.processDoubanData(res.data, setKey, cateTitle);
       },
       fail: function () {
         console.log("fail");
       }
     })
+  },
+  processDoubanData: function (moviesDouban,setKey,cateTitle){
+    var movies = [];
+    for (var idx in moviesDouban.subjects){
+      var subject = moviesDouban.subjects[idx];
+      var title = subject.title;
+      if(title.length >= 6){
+        title = title.substring(0,6)+"...";
+      }
+      var temp={
+        stars: util.convertToStars(subject.rating.stars),
+        title:title,
+        average:subject.rating.average,
+        coverageUrl:subject.images.large,
+        movieId:subject.id
+      }
+      console.log(temp.stars);
+      movies.push(temp);
+    }
+    var readyData = {};
+    readyData[setKey] = {
+      movies:movies,
+      cateTitle: cateTitle
+      };
+    this.setData(readyData);
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

@@ -14,6 +14,26 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
-module.exports = {
-  formatTime: formatTime
+function convertToStars(stars) {
+  var num = stars.toString().substring(0, 1);
+  var half = stars.toString().substring(1,2);
+  var array = [];
+  for (var i = 1; i <= 5; i++) {
+    if (i <= num) {
+      array.push(1);
+    } else {
+      array.push(0);
+    }
+  }
+  if (half !== "0") {
+    array[parseInt(num)] = 2;
+  }
+  return array;
 }
+
+module.exports = {
+  formatTime: formatTime,
+  convertToStars: convertToStars
+}
+
+
