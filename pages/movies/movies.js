@@ -24,6 +24,13 @@ Page({
     this.getMovieListData(top25oUrl,"top250","豆瓣top250");
   },
 
+  onMoreTap:function(event){
+    var category = event.currentTarget.dataset.category;
+    wx.navigateTo({
+      url: 'more-movie/more-movie?category='+category,
+    })
+  },
+
   getMovieListData: function (url, setKey, cateTitle){
     wx.request({
       url: url,
@@ -54,7 +61,6 @@ Page({
         coverageUrl:subject.images.large,
         movieId:subject.id
       }
-      console.log(temp.stars);
       movies.push(temp);
     }
     var readyData = {};
