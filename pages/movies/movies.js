@@ -8,7 +8,10 @@ Page({
   data: {
     inTheaters:{},
     comingSoon:{},
-    top250:{}
+    top250:{},
+    searchResutl:{},
+    containerShow:true,
+    searchPanelShow:false
   },
 
   /**
@@ -28,6 +31,12 @@ Page({
     var category = event.currentTarget.dataset.category;
     wx.navigateTo({
       url: 'more-movie/more-movie?category='+category,
+    })
+  },
+  onMovieTap:function(event){
+    var movieId = event.currentTarget.dataset.movieid;
+    wx.navigateTo({
+      url: 'movie-detail/movie-detail?id=' + movieId
     })
   },
 
@@ -69,6 +78,24 @@ Page({
       cateTitle: cateTitle
       };
     this.setData(readyData);
+  },
+  onCancelImgTap:function(event){
+    this.setData({
+      containerShow: true,
+      searchPanelShow: false,
+      searchResult:{}
+    })
+  },
+  onBindFocus:function(event){
+    this.setData({
+      containerShow:false,
+      searchPanelShow:true
+    })
+  },
+  onBindChange:function(event){
+    var text = event.detail.value;
+    var searchUrl = app.globalData.apiBase + "/v2/movie/search?q=" + text; 
+    this.getMovieListData(searchUrl,"searchResutl","");
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

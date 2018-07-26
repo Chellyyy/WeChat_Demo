@@ -63,7 +63,14 @@ Page({
       })
       app.globalData.g_isPlayingMusic = false;
       app.globalData.g_currentMusicPostId = null;
-    })
+    });
+    wx.onBackgroundAudioStop(() => {
+      this.setData({
+        isPlayingMusic: false
+      })
+      app.globalData.g_isPlayingMusic = false;
+      app.globalData.g_currentMusicPostId = null;
+    });
   },
   onCollectionTap:function(){
     var postsCollected = wx.getStorageSync("posts_collected");
@@ -138,9 +145,13 @@ Page({
         isPlayingMusic: true
       })
     }
-
-    
   },
+  // bindended="musicEnd"
+  // musicEnd:function(){
+  //   this.setData({
+  //     isPlayingMusic:false
+  //   })
+  // },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

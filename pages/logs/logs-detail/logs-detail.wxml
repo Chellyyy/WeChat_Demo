@@ -1,5 +1,5 @@
 <view class='container'>
-  <image class='detail-img' src="{{isPlayingMusic?postData.music.coverImg:postData.headImgSrc}}"></image>
+  <image class='detail-img' src="{{isPlayingMusic?postData.music.coverImg:postData.headImgSrc}}" ></image>
   <image catchtap='onMusicTap' class='detail-music' src="{{isPlayingMusic?'/images/music/music-stop.png':'/images/music/music-start.png'}}"></image>
   <view class='detail-data'>
     <image class='detail-data-avatar' src='{{postData.avatar}}'></image>

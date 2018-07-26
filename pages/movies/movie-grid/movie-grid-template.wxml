@@ -1,4 +1,5 @@
 <import src="../movie/movie-template.wxml" />
+
 <template name="movieGridTemplate">
   <scroll-view class='grid-container'
   scroll-y="true" scroll-x="false"
