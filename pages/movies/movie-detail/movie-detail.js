@@ -37,17 +37,26 @@ Page({
       title:data.title,
       originalTitle: data.original_title,
       wishCount:data.wish_count,
+      commentCount: data.comments_count,
       year:data.year,
       generes:data.genres.join("、"),
       stars: util.convertToStars(data.rating.stars),
       score:data.rating.average,
       director:director,
-      cats: util.convertToCastString(data.casts),
-      castInfo: util.convertToCastInfos(data.casts),
+      casts: util.convertToCastString(data.casts),
+      castsInfo: util.convertToCastInfos(data.casts),
       summary:data.summary
     }
     this.setData({
       movie:movie
+    })
+  },
+  //查看图片
+  viewMoviePostImg:function(event){
+    var src = event.currentTarget.dataset.src;
+    wx.previewImage({
+      urls: [src],
+      current:src
     })
   },
   /**

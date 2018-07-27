@@ -74,21 +74,35 @@ Page({
     this.data.totalCount =this.data.totalCount+20;
     wx.hideNavigationBarLoading();
   },
-  onScrollLower:function(event){
-    var nextUrl = this.data.requestUrl +
-    "?start=" + this.data.totalCount +"&count=20";
-    util.http(nextUrl, this.callback);
-    wx.showNavigationBarLoading();
-    wx.stopPullDownRefresh();
-  },
+  // onScrollLower:function(event){
+  //   var nextUrl = this.data.requestUrl +
+  //   "?start=" + this.data.totalCount +"&count=20";
+  //   util.http(nextUrl, this.callback);
+  //   wx.showNavigationBarLoading();
+  //   wx.stopPullDownRefresh();
+  // },
   //下拉刷新
   onPullDownRefresh:function(){
     var refreshUrl = this.data.requestUrl 
     + "?start=0&count=20";
     this.data.movies = {};
     this.data.isEmpty = true;
+    this.data.totalCount = 0;
     util.http(refreshUrl,this.callback);
     wx.hideNavigationBarLoading();
+  },
+  onReachBottom: function () {
+    var nextUrl = this.data.requestUrl +
+      "?start=" + this.data.totalCount + "&count=20";
+    util.http(nextUrl, this.callback);
+    wx.showNavigationBarLoading();
+    wx.stopPullDownRefresh();
+  },
+  onMovieTap: function (event) {
+    var movieId = event.currentTarget.dataset.movieid;
+    wx.navigateTo({
+      url: '../movie-detail/movie-detail?id=' + movieId
+    })
   },
   onReady:function(event){
     wx.setNavigationBarTitle({
